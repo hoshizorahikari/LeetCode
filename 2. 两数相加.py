@@ -31,28 +31,28 @@ class Solution:
             return l2
         if l2 is None:
             return l1
-        s = l1.val+l2.val
+        s = l1.val + l2.val
         head = ListNode(s % 10)
-        tag = s//10  # 是否进位,0或1
+        flag = s // 10  # 是否进位,0或1
         cur = head  # 新链表的工作指针
         while l1.next and l2.next:
-            s = l1.next.val+l2.next.val+tag
+            s = l1.next.val + l2.next.val + flag
             cur.next = ListNode(s % 10)
-            tag = s//10
+            flag = s // 10
             l1, l2, cur = l1.next, l2.next, cur.next
         # 其中有一个链表遍历结束,将另一个链表遍历完
         while l1.next:
-            s = l1.next.val+tag
+            s = l1.next.val + flag
             cur.next = ListNode(s % 10)
-            tag = s//10
+            flag = s // 10
             l1, cur = l1.next, cur.next
         while l2.next:
-            s = l2.next.val+tag
+            s = l2.next.val + flag
             cur.next = ListNode(s % 10)
-            tag = s//10
+            flag = s // 10
             l2, cur = l2.next, cur.next
-        if tag:  # 可能进位
-            cur.next = ListNode(tag)
+        if flag:  # 可能进位
+            cur.next = ListNode(flag)
         return head
 
     def addTwoNumbers_2(self, l1, l2):

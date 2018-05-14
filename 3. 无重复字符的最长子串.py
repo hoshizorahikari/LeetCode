@@ -26,7 +26,7 @@ class Solution:
         d = {}  # 每个字符为key, 下标为value
         for i in range(len(s)):
             # 如果s[i]在start~i不重复(0~i不重复或重复位置<start), 随时更新最大长度
-            if s[i] not in d or d[s[i]] < start:
+            if s[i] not in d:# or d[s[i]] < start:
                 max_len = max(max_len, i - start + 1)
             else:  # 重复则start移到与s[i]重复字符后一位
                 start = d[s[i]] + 1
@@ -42,4 +42,4 @@ if __name__ == '__main__':
     print(s.lengthOfLongestSubstring('aab'))  # 2
     print(s.lengthOfLongestSubstring('abb'))  # 2
     print(s.lengthOfLongestSubstring('dedf'))  # 3
-    print(s.lengthOfLongestSubstring('abba'))  # 2
+    print(s.lengthOfLongestSubstring('abbac'))  # 3

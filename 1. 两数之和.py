@@ -29,7 +29,8 @@ class Solution:
             if not nums[i] in d:
                 d[nums[i]] = i
             if target - nums[i] in d:
-                # 可能出现nums[i]*2=target的情况,此时j=i,不符合;所以另一个下标j要在i之前
+                # 可能出现nums[i]*2=target的情况,此时j=i,不符合;
+                # 所以另一个下标j要在i之前
                 j = d[target - nums[i]]
                 if j < i:
                     return [j, i]
